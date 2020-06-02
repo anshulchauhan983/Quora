@@ -21,8 +21,9 @@ public class CommonController {
     @Autowired
     CommonService commonService;
 
+    // fetched details of a User. It requires the userId and authrization header//
     @RequestMapping(method = RequestMethod.GET, path = "/userprofile/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<UserDetailsResponse> getImage(@PathVariable("userId") final String userId, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UserNotFoundException {
+    public ResponseEntity<UserDetailsResponse> getUserDetails(@PathVariable("userId") final String userId, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UserNotFoundException {
 
         final UserEntity userDetail = commonService.getUser(userId, authorization);
 

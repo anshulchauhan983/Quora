@@ -14,6 +14,8 @@ public class AdminService {
 
     @Autowired
     private UserDao userDao;
+
+    //deletes a user
     @Transactional
     public UserEntity deleteUser(final String uuid, final String authorization) throws AuthorizationFailedException, UserNotFoundException {
         UserEntity userByID = userDao.getuserByUuid(uuid);

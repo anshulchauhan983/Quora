@@ -34,6 +34,7 @@ public class UserController {
     @Autowired
     private UserSignupService userSignupService;
 
+    // Signs up a User. It requires the all user details field from request//
     @RequestMapping(method = RequestMethod.POST, path = "/user/signup", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SignupUserResponse> userSignup(final SignupUserRequest signupUserRequest) throws SignUpRestrictedException {
 
@@ -59,6 +60,7 @@ public class UserController {
         return new ResponseEntity<SignupUserResponse>(userResponse, HttpStatus.CREATED);
     }
 
+    // Signs in a User. It requires the authrization header from request//
     @RequestMapping(method = RequestMethod.POST, path = "/user/signin", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SigninResponse> login(@RequestHeader("authorization") final String authorization) throws AuthenticationFailedException {
         byte[] decode = Base64.getDecoder().decode(authorization);
@@ -76,6 +78,7 @@ public class UserController {
         return new ResponseEntity<SigninResponse>(authorizedUserResponse, headers, HttpStatus.OK);
     }
 
+    // Signs out a User. It requires the authrization header from request//
     @RequestMapping(method = RequestMethod.POST, path = "/user/signout", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SignoutResponse> logout(@RequestHeader("authorization") final String authorization) throws SignOutRestrictedException {
 

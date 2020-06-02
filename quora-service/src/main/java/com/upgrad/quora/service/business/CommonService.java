@@ -14,6 +14,12 @@ public class CommonService {
     @Autowired
     private UserDao userDao;
 
+    /**Service to get User details.
+     * @param uuid user uuid
+     * @param authorization authrization
+     * @return UserAuthEntity
+     * @throws AuthorizationFailedException AuthorizationFailedException
+     */
     public UserEntity getUser(final String uuid, final String authorization) throws AuthorizationFailedException, UserNotFoundException {
 
         UserEntity userByID = userDao.getuserByUuid(uuid);
