@@ -17,6 +17,11 @@ public class UserSignupService {
     @Autowired
     private PasswordCryptographyProvider passwordCryptographyProvider;
 
+    /**Service to validate Bearer authorization token.
+     * @param userEntity UserEntity
+     * @return UserAuthEntity
+     * @throws com.upgrad.quora.service.exception.SignOutRestrictedException
+     */
     @Transactional(propagation = Propagation.REQUIRED)
     public UserEntity signUp(UserEntity userEntity) throws SignUpRestrictedException {
         UserEntity userByEmail = userDao.getUserByEmail(userEntity.getEmail());

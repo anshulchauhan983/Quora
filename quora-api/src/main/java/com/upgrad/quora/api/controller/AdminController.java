@@ -21,8 +21,9 @@ public class AdminController {
     @Autowired
     AdminService adminService;
 
+    // Deletes a User. It requires the userId and authrization header//
     @RequestMapping(method = RequestMethod.DELETE, path = "/admin/user/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<UserDeleteResponse> getImage(@PathVariable("userId") final String userId, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UserNotFoundException {
+    public ResponseEntity<UserDeleteResponse> deleteUser(@PathVariable("userId") final String userId, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UserNotFoundException {
 
         final UserEntity userDetail = adminService.deleteUser(userId, authorization);
 
